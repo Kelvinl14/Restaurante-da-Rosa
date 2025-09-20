@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="ptbr">
 
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,10 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/4b655550e9.js" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=maps,marker&v=beta" defer></script>
-    <link rel="stylesheet" href="sourc/CSS/reset.css">
-    <link rel="stylesheet" href="sourc/CSS/style.css">
-    <link rel="stylesheet" href="sourc/CSS/media.css">
+    <link rel="stylesheet" href="src/CSS/reset.css">
+    <link rel="stylesheet" href="src/CSS/style.css">
+    <link rel="stylesheet" href="src/CSS/media.css">
+    <script src="config.js"></script>
     <title>Restaurante da Rosa</title>
 </head>
 
@@ -32,7 +33,7 @@
     </header>
     <main>
         <div class="conteiner-img">
-            <img src="sourc/img/img_rest_rosa.jpg" alt="">
+            <img src="src/img/img_rest_rosa.jpg" alt="">
             <div class="content">
                 <div class="conteiner-text">
                     <h2>Seja Bem-vindo!</h2>
@@ -60,7 +61,7 @@
         </div>
         <div class="conteiner-info" id="Cardapio">
             <h1>Cardápio</h1>
-            <img class="cardapio" src="sourc/img/Cardápio lanchonete comida restaurante marrom e amarelo .jpg" alt="">
+            <img class="cardapio" src="src/img/Cardápio lanchonete comida restaurante marrom e amarelo .jpg" alt="">
             <h1>Horário de Funcionamento</h1>
             <div class="time">
                 <ul>
@@ -71,8 +72,22 @@
         </div>
         <div class="conteiner-info" id="Localizacao">
             <h1>Localização</h1>
-            <iframe width="800" height="450" style="border:0" load="Lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-_C9UzBXiAcRyniehcScR00&key={key}">
+            <iframe 
+                id="mapIframe"
+                width="800" 
+                height="450" 
+                style="border:0" 
+                load="Lazy" 
+                allowfullscreen>
             </iframe>
+
+            <script>
+            // Aguarda o config.js carregar
+            setTimeout(() => {
+                const iframe = document.getElementById('mapIframe');
+                iframe.src = `https://www.google.com/maps/embed/v1/place?q=place_id:${CONFIG.MAPS_PLACE_ID}&key=${CONFIG.GOOGLE_MAPS_API_KEY}`;
+            }, 100);
+    </script>
         </div>
     </main>
     <footer>
@@ -80,6 +95,4 @@
     </footer>
 </body>
 
-
 </html>
-
